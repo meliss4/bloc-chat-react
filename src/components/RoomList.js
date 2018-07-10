@@ -19,11 +19,11 @@ export class RoomList extends Component{
 
       render() {
         return(
-            <div class='app'>
-            <div class='sidenav'>
+            <div className='app'>
+            <div className='sidenav'>
             <h3>Bloc Chat</h3>
             {
-this.state.rooms.map((indexedDB) => <p className='rooms' key={indexedDB}>{indexedDB.name}</p>
+this.state.rooms.map((list, index) => <p className='rooms' key={index}>{list.name}</p>
 )}
             </div>
             </div>
