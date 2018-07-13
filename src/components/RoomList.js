@@ -24,9 +24,11 @@ export class RoomList extends Component{
             this.roomsRef.push({ name: this.newRoomRef });
       }
 
-      pushNewRoom(e) {
+      //push new room to firebase
+      handleChange(e) {
           this.setState( { new_room: e.target.value })
           this.newRoomRef = this.state.new_room;
+          console.log(this.state.new_room);
       }
 
       render() {
@@ -40,7 +42,7 @@ export class RoomList extends Component{
             </div>
 
             <form onSubmit={ (e) => this.newRoom(e) }>
-                <input type="text" value={this.state.newRoomRef} onChange={(e) => this.pushNewRoom(e) }/>
+                <input type="text" value={this.state.newRoomRef} onChange={(e) => this.handleChange(e) }/>
                 <input type="submit" value="Create New Room"  />
             </form>
             </div>
