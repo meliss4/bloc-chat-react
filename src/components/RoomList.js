@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 
-export class RoomList extends Component{
+class RoomList extends Component{
     constructor(props){
         super(props);
         this.roomsRef = this.props.firebase.database().ref('rooms');
         this.state = {
-            rooms: []
+            rooms: [], 
+            new_room: ''
           };
     }
 
@@ -20,15 +21,14 @@ export class RoomList extends Component{
       }
 
       newRoom(e) {
-          e.preventDefault();
-            this.roomsRef.push({ name: this.newRoomRef });
-      }
+        e.preventDefault();
+          this.roomsRef.push({ name: this.state.new_room });
+    }
 
       //push new room to firebase
       handleChange(e) {
-          this.setState( { new_room: e.target.value })
-          this.newRoomRef = this.state.new_room;
-          console.log(this.state.new_room);
+        this.setState( { new_room: e.target.value })
+        //   console.log(e.target.value)
       }
 
       render() {
@@ -42,7 +42,7 @@ export class RoomList extends Component{
             </div>
 
             <form onSubmit={ (e) => this.newRoom(e) }>
-                <input type="text" value={this.state.newRoomRef} onChange={(e) => this.handleChange(e) }/>
+                <input type="text" value={this.state.new_room} onChange={(e) => this.handleChange(e) }/>
                 <input type="submit" value="Create New Room"  />
             </form>
             </div>
