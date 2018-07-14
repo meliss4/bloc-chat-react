@@ -3,3 +3,10 @@ body {
   padding: 0;
   font-family: sans-serif;
 }
+
+.sidebar{
+  background-color: gainsboro;
+  width: 25%;
+  height: auto;
+}
+
