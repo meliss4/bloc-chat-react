@@ -15,11 +15,13 @@ class RoomList extends Component{
             const room = snapshot.val();
             room.key = snapshot.key;
             this.setState({ rooms: this.state.rooms.concat( room ), 
-            new_room: ''
+            new_room: '', 
+            current_room: ''
           });
         });
       }
 
+      //create new room 
       newRoom(e) {
         e.preventDefault();
           this.roomsRef.push({ name: this.state.new_room });
@@ -31,20 +33,23 @@ class RoomList extends Component{
         //   console.log(e.target.value)
       }
 
+      //click chat room
+    //   this.
+
+
       render() {
         return(
-            <div className='navigation'>
-            <div className='sidenav'>
+            <div className='roomListMain'>
+            <div className='roomNav'>
             <h3>Bloc Chat</h3>
-            {
-                this.state.rooms.map((list, index) => <p className='rooms' key={index}>{list.name}</p>
-)}
-            </div>
-
             <form onSubmit={ (e) => this.newRoom(e) }>
                 <input type="text" value={this.state.new_room} onChange={(e) => this.handleChange(e) }/>
                 <input type="submit" value="Create New Room"  />
             </form>
+
+            {this.state.rooms.map((list, index) => <p className='rooms' key={index}>{list.name}</p>)}
+
+            </div>
             </div>
         );
     }

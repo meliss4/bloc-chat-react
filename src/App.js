@@ -20,12 +20,13 @@ class App extends Component {
   render() {
     return (
       <div className="app">
-      <div className="sidebar">
+      <div className="sidebar .col-sm .col-sm-offset-1">
         <RoomList firebase={firebase}/>
       </div>
 
-      <div className="main">
+      <div className="main .col-auto - variable width content">
       <MessageList firebase={firebase}/>
+      {/* <chatroom chatHistory={chatHistory} /> */}
       </div>
       </div>
     );

@@ -4,9 +4,15 @@ body {
   font-family: sans-serif;
 }
 
+/*  app.js  */
 .sidebar{
   background-color: gainsboro;
   width: 25%;
   height: auto;
+  float: left;
+}
+
+.main {
+  float: left;
 }
 
