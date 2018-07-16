@@ -3,11 +3,11 @@ import React, { Component } from 'react';
 class RoomList extends Component{
     constructor(props){
         super(props);
-        this.roomsRef = this.props.firebase.database().ref('rooms');
         this.state = {
             rooms: [], 
             new_room: ''
           };
+          this.roomsRef = this.props.firebase.database().ref('rooms');
     }
 
     componentDidMount() {
@@ -15,8 +15,7 @@ class RoomList extends Component{
             const room = snapshot.val();
             room.key = snapshot.key;
             this.setState({ rooms: this.state.rooms.concat( room ), 
-            new_room: '', 
-            current_room: ''
+            new_room: ''
           });
         });
       }
@@ -25,6 +24,7 @@ class RoomList extends Component{
       newRoom(e) {
         e.preventDefault();
           this.roomsRef.push({ name: this.state.new_room });
+
     }
 
       //push new room to firebase
@@ -33,24 +33,24 @@ class RoomList extends Component{
         //   console.log(e.target.value)
       }
 
-      //click chat room
-    //   this.
-
-
       render() {
         return(
-            <div className='roomListMain'>
-            <div className='roomNav'>
-            <h3>Bloc Chat</h3>
+          <div className="chatApp">
+          <div className="chatMessage .col-3">
+          <h3>Bloc Chat</h3>
+          {/* room list and active room onClick */}
+            {this.state.rooms.map(( room ) => <p key={ room.key } onClick={() => this.props.setActiveRoom(room)}>{room.name}</p>
+            )}
+          </div>
+          <div className='roomNav .col-3'>
+          {/* create new room input and submit */}
             <form onSubmit={ (e) => this.newRoom(e) }>
                 <input type="text" value={this.state.new_room} onChange={(e) => this.handleChange(e) }/>
                 <input type="submit" value="Create New Room"  />
             </form>
+          </div>
 
-            {this.state.rooms.map((list, index) => <p className='rooms' key={index}>{list.name}</p>)}
-
-            </div>
-            </div>
+          </div>
         );
     }
 }
