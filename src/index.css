@@ -7,16 +7,12 @@ body {
 /*  app.js  */
 .sidebar{
   background-color: gainsboro;
-  width: 20%;
+  width: 30%;
   height: 100%;
   position: fixed;
 }
 
-.chatMessage {
-  width:75%;
-  margin-inline-start: auto;
-}
-
-.chatApp{
-  text-align: left;
+.messageArea, .chatRoomName {
+  width: 70%;
+  float: right;
 }

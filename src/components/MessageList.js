@@ -50,8 +50,6 @@ class MessageList extends Component{
         return(
             <div className='messageApp'>
             <div className='messageArea .col-auto'>
-            </div>
-            <div>
               <ul>
               {this.state.messages.map((message) => {
                   if (message.roomId === this.props.setActiveRoom) {
