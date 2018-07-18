@@ -5,7 +5,7 @@ class RoomList extends Component{
         super(props);
         this.state = {
             rooms: [], 
-            new_room: ''
+            new_room: '',
           };
           this.roomsRef = this.props.firebase.database().ref('rooms');
     }
@@ -15,7 +15,7 @@ class RoomList extends Component{
             const room = snapshot.val();
             room.key = snapshot.key;
             this.setState({ rooms: this.state.rooms.concat( room ), 
-            new_room: ''
+            new_room: '',
           });
         });
       }
@@ -24,8 +24,7 @@ class RoomList extends Component{
       newRoom(e) {
         e.preventDefault();
           this.roomsRef.push({ name: this.state.new_room });
-
-    }
+      }
 
       //push new room to firebase
       handleChange(e) {
@@ -33,13 +32,24 @@ class RoomList extends Component{
         //   console.log(e.target.value)
       }
 
+      deleteRoom(room){
+        this.roomsRef.child(room.key).remove();
+        const indexRoom = this.state.rooms.indexOf(room);
+        this.state.rooms.splice(indexRoom, 1);
+        this.setState({rooms: this.state.rooms})
+    }
+
       render() {
         return(
           <div className="chatApp .navbar-fixed-left h-100 d-inline-block col-md-3">
           <div className="chatMessage">
           <h3>Bloc Chat</h3>
           {/* room list and active room onClick */}
-            {this.state.rooms.map(( room ) => <p key={ room.key } onClick={() => this.props.setActiveRoom(room)}>{room.name}</p>
+            {this.state.rooms.map(( room ) => 
+            <p key={ room.key } onClick={() => 
+              this.props.setActiveRoom(room)}>{room.name}
+              <button className="tn btn-danger btn-sm" onClick={ () => this.deleteRoom(room)}>x</button>
+              </p>
             )}
           </div>
           <div className='roomNav'>

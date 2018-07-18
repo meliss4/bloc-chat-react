@@ -45,6 +45,13 @@ class MessageList extends Component{
     this.setState({ username: '', content: '', sentAt: '', roomId: ''});
   }
 
+  deleteMessage(message){
+      this.messagesRef.child(message.key).remove();
+      const index = this.state.messages.indexOf(message);
+      this.state.messages.splice(index, 1);
+      this.setState({messages: this.state.messages})
+  }
+
       render() {
         return(
             <div className='container-fluid'>
@@ -52,7 +59,7 @@ class MessageList extends Component{
               <ul>
               {this.state.messages.map((message) => {
                   if (message.roomId === this.props.setActiveRoom) {
-                      return <li key={message.key }>{message.content} <br /><span className="username"><em>{message.username}</em></span></li> 
+                      return <li key={message.key }>{message.content} <button className="deletebtn btn-danger pull-right" onClick={ () => this.deleteMessage(message)}>x</button><br /><span className="username"><em>{message.username}</em></span></li> 
                     }
                     null;
                 })

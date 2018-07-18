@@ -41,16 +41,25 @@ class App extends Component {
       <div className="clearfix">
       <div className="sidebar mh-100 bg-warning float-left">
           <div className="login">
-            <User firebase={firebase} setUser={this.setUser} currentUser={this.state.user}/> 
+            <User 
+            firebase={firebase} 
+            setUser={this.setUser} 
+            currentUser={this.state.user}/> 
             </div><br />
-        <RoomList firebase={firebase} setActiveRoom = {this.setActiveRoom} activeRoom = {this.state.activeRoom}/>
+        <RoomList 
+        firebase={firebase} 
+        setActiveRoom = {this.setActiveRoom} 
+        activeRoom = {this.state.activeRoom}/>
       </div>
       <div className="clearfix">
       <div className="chatRoomName">
         <h3 className="chatRoomName"> Chat Room: 
           {this.state.activeRoom.name} </h3>
         { this.state.activeRoom ?
-        (<MessageList firebase={firebase} setActiveRoom={this.state.activeRoom.key} currentUser={this.state.user.displayName} />) : (null)
+        (<MessageList 
+          firebase={firebase} 
+          setActiveRoom={this.state.activeRoom.key} 
+          currentUser={this.state.user.displayName} />) : (null)
       }
         </div>
         </div>

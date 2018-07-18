@@ -4,21 +4,3 @@ body {
   font-family: sans-serif;
 }
 
-/*  app.js  */
-.sidebar{
-  background-color: gainsboro;
-  width: 25%;
-  height: 100%;
-}
-
-.chatRoomName{ 
-  width: auto;
-  height: 100%;
-}
-
-.username{
-  font-size: .7em;
-  color: darkgray;
-  line-height: .8em; 
-}
-
