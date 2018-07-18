@@ -35,21 +35,23 @@ class RoomList extends Component{
 
       render() {
         return(
-          <div className="chatApp">
-          <div className="chatMessage .col-3">
+          <div className="chatApp .navbar-fixed-left h-100 d-inline-block col-md-3">
+          <div className="chatMessage">
           <h3>Bloc Chat</h3>
           {/* room list and active room onClick */}
             {this.state.rooms.map(( room ) => <p key={ room.key } onClick={() => this.props.setActiveRoom(room)}>{room.name}</p>
             )}
           </div>
-          <div className='roomNav .col-3'>
+          <div className='roomNav'>
           {/* create new room input and submit */}
             <form onSubmit={ (e) => this.newRoom(e) }>
                 <input type="text" value={this.state.new_room} onChange={(e) => this.handleChange(e) }/>
                 <input type="submit" value="Create New Room"  />
             </form>
           </div>
-
+        <div>
+          <p></p>
+        </div>
           </div>
         );
     }

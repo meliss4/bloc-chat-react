@@ -6,13 +6,20 @@ body {
 
 /*  app.js  */
 .sidebar{
-  background-color: gainsboro;
-  width: 30%;
+  background-color: gainsboro; 
   height: 100%;
-  position: fixed;
+  overflow: hidden; 
+   width: auto; 
 }
 
-.messageArea, .chatRoomName {
-  width: 70%;
-  float: right;
+.chatRoomName{ 
+  width: auto;
+  height: 100%;
 }
+
+.username{
+  font-size: .7em;
+  color: darkgray;
+  line-height: .8em; 
+}
+

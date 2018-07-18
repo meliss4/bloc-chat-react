@@ -37,21 +37,21 @@ class App extends Component {
 
   render() {
     return (
-      <div className="app">
-      <div className="sidebar .col-25%">
+      <div className="container-fluid app">
+      <div className="row">
+      <div className="sidebar col-md-4">
           <div className="login">
             <User firebase={firebase} setUser={this.setUser} currentUser={this.state.user}/> 
-            </div>
+            </div><br />
         <RoomList firebase={firebase} setActiveRoom = {this.setActiveRoom} activeRoom = {this.state.activeRoom}/>
       </div>
-<div className="chatRoomName">
-      <h2 className="chatRoomName"> Chat Room: 
-      {this.state.activeRoom.name} </h2>
-      </div>
-      <div  className="active">
+      <div className="chatRoomName col-md-8">
+        <h3 className="chatRoomName"> Chat Room: 
+          {this.state.activeRoom.name} </h3>
         { this.state.activeRoom ?
-        (<MessageList firebase={firebase} setActiveRoom={this.state.activeRoom.key} />) : (null)
-        }
+        (<MessageList firebase={firebase} setActiveRoom={this.state.activeRoom.key} currentUser={this.state.user.displayName} />) : (null)
+      }
+        </div>
         </div>
       </div>
     );

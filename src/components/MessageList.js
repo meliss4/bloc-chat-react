@@ -14,8 +14,7 @@ class MessageList extends Component{
           this.messagesRef = this.props.firebase.database().ref('messages');
           this.handleChange = this.handleChange.bind(this);
           this.createMessage = this.createMessage.bind(this);
-
-  }
+    }
 
   componentDidMount() {
     this.messagesRef.on('child_added', snapshot => {
@@ -28,7 +27,7 @@ class MessageList extends Component{
   handleChange(e) {
     e.preventDefault();
     this.setState({
-        username: 'Test',
+        username: this.props.currentUser,
         content: e.target.value,
         sentAt: this.props.firebase.database.ServerValue.TIMESTAMP,
         roomId: this.props.setActiveRoom
@@ -48,21 +47,23 @@ class MessageList extends Component{
 
       render() {
         return(
-            <div className='messageApp'>
-            <div className='messageArea .col-auto'>
+            <div className='container-fluid'>
+            <div className="row">
               <ul>
               {this.state.messages.map((message) => {
                   if (message.roomId === this.props.setActiveRoom) {
-                      return <li key={ message.key }>{message.content}</li>
+                      return <li key={message.key }>{message.content} <br /><span className="username"><em>{message.username}</em></span></li> 
                     }
                     null;
                 })
                 }
               </ul>
-              <form onSubmit={this.createMessage} >
-              <input type="text" value={this.state.content} onChange={this.handleChange} />
-             <input type="submit" value="Submit"/>
-              </form>
+              <div className="w-100">
+               <form className="newMessage" onSubmit={this.createMessage} > <br />
+               <input className="messageBox" type="textarea" value={this.state.content} onChange={this.handleChange} />
+               <input className="messageSubmit" type="submit" value="Send"/>
+               </form>
+               </div>
             </div>
             </div>
         );
