@@ -6,10 +6,9 @@ body {
 
 /*  app.js  */
 .sidebar{
-  background-color: gainsboro; 
+  background-color: gainsboro;
+  width: 25%;
   height: 100%;
-  overflow: hidden; 
-   width: auto; 
 }
 
 .chatRoomName{ 
