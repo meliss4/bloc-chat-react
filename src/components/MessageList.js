@@ -27,7 +27,7 @@ class MessageList extends Component{
   handleChange(e) {
     e.preventDefault();
     this.setState({
-        username: this.props.currentUser,
+        username: this.props.user.displayName,
         content: e.target.value,
         sentAt: this.props.firebase.database.ServerValue.TIMESTAMP,
         roomId: this.props.setActiveRoom
@@ -50,6 +50,10 @@ class MessageList extends Component{
       const index = this.state.messages.indexOf(message);
       this.state.messages.splice(index, 1);
       this.setState({messages: this.state.messages})
+  }
+
+  editMessage(){
+
   }
 
       render() {

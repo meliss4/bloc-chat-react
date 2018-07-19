@@ -39,7 +39,7 @@ class App extends Component {
     return (
       <div className="container-fluid app">
       <div className="clearfix">
-      <div className="sidebar mh-100 bg-warning float-left">
+      <div className="sidebar mh-100 bg-secondary float-left">
           <div className="login">
             <User 
             firebase={firebase} 
@@ -59,7 +59,7 @@ class App extends Component {
         (<MessageList 
           firebase={firebase} 
           setActiveRoom={this.state.activeRoom.key} 
-          currentUser={this.state.user.displayName} />) : (null)
+          currentUser={this.state.username} />) : (null)
       }
         </div>
         </div>

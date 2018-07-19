@@ -48,7 +48,7 @@ class RoomList extends Component{
             {this.state.rooms.map(( room ) => 
             <p key={ room.key } onClick={() => 
               this.props.setActiveRoom(room)}>{room.name}
-              <button className="tn btn-danger btn-sm" onClick={ () => this.deleteRoom(room)}>x</button>
+              <button className="btn btn-danger btn-sm" onClick={ () => this.deleteRoom(room)}>x</button>
               </p>
             )}
           </div>
